@@ -71,6 +71,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-记用hexo搭建个人博客及使用心得" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/02/10/%E8%AE%B0%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" class="article-date">
+  <time class="dt-published" datetime="2021-02-10T01:22:08.000Z" itemprop="datePublished">2021-02-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/tips/">tips</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/02/10/%E8%AE%B0%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">记用hexo搭建个人博客及使用心得</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="搭建hexo个人博客请参考搭建hexo个人博客"><a href="#搭建hexo个人博客请参考搭建hexo个人博客" class="headerlink" title="搭建hexo个人博客请参考搭建hexo个人博客"></a>搭建hexo个人博客请参考<a target="_blank" rel="noopener" href="https://www.cnblogs.com/qinghan123/p/14019115.html">搭建hexo个人博客</a></h2>
+        
+          <p class="article-more-link">
+            <a href="/2021/02/10/%E8%AE%B0%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://royal119790617.github.io/2021/02/10/%E8%AE%B0%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/" data-id="ckkysbq780000pgv89z8mar9j" data-title="记用hexo搭建个人博客及使用心得" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-docker-compose安装mysql8-0集群" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/02/09/docker-compose%E5%AE%89%E8%A3%85mysql8-0%E9%9B%86%E7%BE%A4/" class="article-date">
@@ -97,42 +144,12 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="前提：docker和docker-compose都安装完毕"><a href="#前提：docker和docker-compose都安装完毕" class="headerlink" title="前提：docker和docker-compose都安装完毕"></a>前提：docker和docker-compose都安装完毕</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">* docker pull mysql:8.0 拉取镜像到本地</span><br><span class="line">* docker images 确认镜像已拉到本地</span><br></pre></td></tr></table></figure>
-<p><img src="/images/Picture1.png" alt="Lena"></p>
-<ul>
-<li>将对应配置目录放置于根目录下,<a href="/download/mysql.rar">点击下载</a><br><img src="/images/Picture2.png" alt="Lena"></li>
-</ul>
-<h3 id="启动主从数据库容器及配置主数据库"><a href="#启动主从数据库容器及配置主数据库" class="headerlink" title="启动主从数据库容器及配置主数据库"></a>启动主从数据库容器及配置主数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;mysql	进入mysql目录</span><br><span class="line">docker-compose -d up	启动容器</span><br><span class="line">docker ps	确认容器是否启动</span><br><span class="line">docker exec -it mysql_mysql-master_1 &#x2F;bin&#x2F;bash	进入容器</span><br></pre></td></tr></table></figure>
-<p><img src="/images/Picture11.png" alt="Lena"></p>
-<ul>
-<li><p>登陆mysql，密码root    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
-<p><img src="/images/Picture12.png" alt="Lena"></p>
-</li>
-<li><p>新建一个主从复制用的用户并赋权</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER &#39;repl&#39;@&#39;%&#39; IDENTIFIED WITH mysql_native_password BY &#39;root&#39;;		</span><br><span class="line">GRANT REPLICATION SLAVE ON *.* TO &#39;repl&#39;@&#39;%&#39;;		</span><br><span class="line">flush privileges;</span><br><span class="line">set global server_id&#x3D;1; 		</span><br><span class="line">SHOW MASTER STATUS;	</span><br></pre></td></tr></table></figure>
-<p><img src="/images/Picture13.png" alt="Lena"></p>
-</li>
-</ul>
-<h3 id="配置从数据库"><a href="#配置从数据库" class="headerlink" title="配置从数据库"></a>配置从数据库</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker exec -it mysql_mysql-slave_1 &#x2F;bin&#x2F;bash	进入容器</span><br></pre></td></tr></table></figure>
-<p><img src="/images/Picture3.png" alt="Lena"></p>
-<ul>
-<li><p>登陆mysql，密码root</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
-<p><img src="/images/Picture4.png" alt="Lena"></p>
-</li>
-<li><p>根据实际的主节点IP，用户名，密码，及日志文件名和位置参数（这两个参数按master配置获取）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CHANGE MASTER TO 		</span><br><span class="line">MASTER_HOST&#x3D;&#39;172.16.9.68&#39;,MASTER_USER&#x3D;&#39;repl&#39;,		</span><br><span class="line">MASTER_PASSWORD&#x3D;&#39;root&#39;,		</span><br><span class="line">MASTER_LOG_FILE&#x3D;&#39;binlog.000002&#39;,		</span><br><span class="line">MASTER_LOG_POS&#x3D;826；</span><br></pre></td></tr></table></figure>
-<p><img src="/images/Picture5.png" alt="Lena"></p>
-</li>
-</ul>
-<p>设置服务器ID，要求master和slave要唯一；    </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">set global server_id&#x3D;2; 		</span><br><span class="line">start slave;		</span><br><span class="line">show slave status\G;</span><br></pre></td></tr></table></figure>
-<p><img src="/images/Picture6.png" alt="Lena"><br><img src="/images/Picture7.png" alt="Lena"></p>
-<ul>
-<li>验证主从集群是否搭建成功，请参考下载压缩包内的《搭建msyql集群操作手册.xlsx》</li>
-</ul>
-
+        <h2 id="前提：docker和docker-compose都安装完毕"><a href="#前提：docker和docker-compose都安装完毕" class="headerlink" title="前提：docker和docker-compose都安装完毕"></a>前提：docker和docker-compose都安装完毕</h2>
+        
+          <p class="article-more-link">
+            <a href="/2021/02/09/docker-compose%E5%AE%89%E8%A3%85mysql8-0%E9%9B%86%E7%BE%A4/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -216,17 +233,12 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p>本文需要有一定的antd相关知识，关于react基础知识请自备。</p>
-<h3 id="父子之间交互高阶版，兼容3-x和4-x"><a href="#父子之间交互高阶版，兼容3-x和4-x" class="headerlink" title="父子之间交互高阶版，兼容3.x和4.x"></a>父子之间交互高阶版，兼容3.x和4.x</h3><p>1.1 添加父组件对子组件的引用 onRef={(ref)=&gt; {this.$Son=ref}}；<br>1.2 父组件的方法传入子组件 handleSon={this.handleSon.bind(this)}<br>1.3 父组件的值传入子组件 pid={this.state.pid}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">父组件</span><br><span class="line">    &lt;Son</span><br><span class="line">        onRef&#x3D;&#123;(ref)&#x3D;&gt; &#123;this.$Son&#x3D;ref&#125;&#125;</span><br><span class="line">        handleSon&#x3D;&#123;this.handleSon.bind(this)&#125;</span><br><span class="line">        visible&#x3D;&#123;this.state.sonVisible&#125;</span><br><span class="line">        onCancel&#x3D;&#123;this.handleSonCancel&#125;</span><br><span class="line">        pid&#x3D;&#123;this.state.pid&#125;</span><br><span class="line">    &#x2F;&gt;</span><br><span class="line">    &lt;SecondSon</span><br><span class="line">        onRef&#x3D;&#123;(ref)&#x3D;&gt; &#123;this.$SecondSon&#x3D;ref&#125;&#125;</span><br><span class="line">        handleSecondSon&#x3D;&#123;this.handleSecondSon.bind(this)&#125;</span><br><span class="line">        visible&#x3D;&#123;this.state.SecondSonVisible&#125;</span><br><span class="line">        onCancel&#x3D;&#123;this.handleSecondSonCancel&#125;</span><br><span class="line">        pid&#x3D;&#123;this.state.pid&#125;</span><br><span class="line">    &#x2F;&gt;</span><br></pre></td></tr></table></figure>
-<p>2.1 子组件构造方法继承父组件的props<br>2.2 子组件添加引用 this.props.onRef(this)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">子组件一</span><br><span class="line">    constructor(props) &#123;</span><br><span class="line">        super(props);</span><br><span class="line"></span><br><span class="line">        this.state &#x3D; &#123;</span><br><span class="line">            loading: false,</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">    componentDidMount() &#123;</span><br><span class="line">        this.props.onRef(this);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>3.1 子组件使用父组件方法及传值到父组件 this.props.handleSon()<br>3.2 子组件使用父组件传入的值 this.props.pid</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">子组件一</span><br><span class="line">    handleBranch &#x3D; (record) &#x3D;&gt; &#123;</span><br><span class="line">        this.props.handleSon(this.props.pid,record.name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>4.1 父组件的方法，1.2被传入子组件，3.1被子组件回调<br>4.2 父组件调用子组件的方法及传值到子组件 this.$Son.handleSecondSon(projectId,branchName)，其中的参数可以是父组件的值<br>注意：this.$Son对象是整个子组件的引用，可以从对象中获取整个子组件的方法或值。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">父组件</span><br><span class="line">  handleSon&#x3D; (projectId,branchName) &#x3D;&gt; &#123;</span><br><span class="line">    this.$Son.handleSecondSon(projectId,branchName);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>5.1 子组件提供给父组件调用的方法，可以接收父组件的传值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">子组件二</span><br><span class="line">    handleSecondSons(projectId,branchName) &#123;</span><br><span class="line">        console.log(projectId)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+        <h2 id="本文需要有一定的antd相关知识，关于react基础知识请自备。"><a href="#本文需要有一定的antd相关知识，关于react基础知识请自备。" class="headerlink" title="本文需要有一定的antd相关知识，关于react基础知识请自备。"></a>本文需要有一定的antd相关知识，关于react基础知识请自备。</h2>
+        
+          <p class="article-more-link">
+            <a href="/2021/02/08/antd%E4%B9%8B%E7%88%B6%E5%AD%90%E5%85%B3%E7%B3%BB/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -252,7 +264,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/antd/">antd</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/antd/">antd</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tips/">tips</a></li></ul>
     </div>
   </div>
 
@@ -278,6 +290,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/02/10/%E8%AE%B0%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">记用hexo搭建个人博客及使用心得</a>
+          </li>
         
           <li>
             <a href="/2021/02/09/docker-compose%E5%AE%89%E8%A3%85mysql8-0%E9%9B%86%E7%BE%A4/">mysql8.0主从集群搭建</a>
