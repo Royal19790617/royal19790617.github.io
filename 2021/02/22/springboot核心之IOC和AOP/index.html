@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>springboot核心之IOC和AOP | Royal&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="我这个人记性很差，看过的很多理论知识，过段时间就忘记了，只能记个大概，俗话说，好记性不如烂笔头，所以记录一下；另外还有位高人曾经点拨，把你学到的理论跟别人去说，不怕说错，错了纠正，跟下个人再说，最终说出来的东西，自己也记得住，结果肯定也正确。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="springboot核心之IOC和AOP">
+<meta property="og:url" content="https://royal119790617.github.io/2021/02/22/springboot%E6%A0%B8%E5%BF%83%E4%B9%8BIOC%E5%92%8CAOP/index.html">
+<meta property="og:site_name" content="Royal&#39;s Blog">
+<meta property="og:description" content="我这个人记性很差，看过的很多理论知识，过段时间就忘记了，只能记个大概，俗话说，好记性不如烂笔头，所以记录一下；另外还有位高人曾经点拨，把你学到的理论跟别人去说，不怕说错，错了纠正，跟下个人再说，最终说出来的东西，自己也记得住，结果肯定也正确。">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://royal119790617.github.io/2021/02/22/springboot%E6%A0%B8%E5%BF%83%E4%B9%8BIOC%E5%92%8CAOP/p1.jpg">
+<meta property="og:image" content="https://royal119790617.github.io/2021/02/22/springboot%E6%A0%B8%E5%BF%83%E4%B9%8BIOC%E5%92%8CAOP/p2.jpg">
+<meta property="og:image" content="https://royal119790617.github.io/2021/02/22/springboot%E6%A0%B8%E5%BF%83%E4%B9%8BIOC%E5%92%8CAOP/p3.jpg">
+<meta property="og:image" content="https://royal119790617.github.io/2021/02/22/springboot%E6%A0%B8%E5%BF%83%E4%B9%8BIOC%E5%92%8CAOP/p4.jpg">
+<meta property="og:image" content="https://royal119790617.github.io/2021/02/22/springboot%E6%A0%B8%E5%BF%83%E4%B9%8BIOC%E5%92%8CAOP/p5.jpg">
+<meta property="og:image" content="https://royal119790617.github.io/2021/02/22/springboot%E6%A0%B8%E5%BF%83%E4%B9%8BIOC%E5%92%8CAOP/p6.jpg">
+<meta property="og:image" content="https://royal119790617.github.io/2021/02/22/springboot%E6%A0%B8%E5%BF%83%E4%B9%8BIOC%E5%92%8CAOP/p7.jpg">
+<meta property="article:published_time" content="2021-02-22T03:37:26.000Z">
+<meta property="article:modified_time" content="2021-03-01T06:39:05.610Z">
+<meta property="article:author" content="Royal">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://royal119790617.github.io/2021/02/22/springboot%E6%A0%B8%E5%BF%83%E4%B9%8BIOC%E5%92%8CAOP/p1.jpg">
+  
+    <link rel="alternate" href="/atom.xml" title="Royal's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Royal&#39;s Blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://royal119790617.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-springboot核心之IOC和AOP" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/02/22/springboot%E6%A0%B8%E5%BF%83%E4%B9%8BIOC%E5%92%8CAOP/" class="article-date">
+  <time class="dt-published" datetime="2021-02-22T03:37:26.000Z" itemprop="datePublished">2021-02-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      springboot核心之IOC和AOP
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="我这个人记性很差，看过的很多理论知识，过段时间就忘记了，只能记个大概，俗话说，好记性不如烂笔头，所以记录一下；另外还有位高人曾经点拨，把你学到的理论跟别人去说，不怕说错，错了纠正，跟下个人再说，最终说出来的东西，自己也记得住，结果肯定也正确。"><a href="#我这个人记性很差，看过的很多理论知识，过段时间就忘记了，只能记个大概，俗话说，好记性不如烂笔头，所以记录一下；另外还有位高人曾经点拨，把你学到的理论跟别人去说，不怕说错，错了纠正，跟下个人再说，最终说出来的东西，自己也记得住，结果肯定也正确。" class="headerlink" title="我这个人记性很差，看过的很多理论知识，过段时间就忘记了，只能记个大概，俗话说，好记性不如烂笔头，所以记录一下；另外还有位高人曾经点拨，把你学到的理论跟别人去说，不怕说错，错了纠正，跟下个人再说，最终说出来的东西，自己也记得住，结果肯定也正确。"></a>我这个人记性很差，看过的很多理论知识，过段时间就忘记了，只能记个大概，俗话说，好记性不如烂笔头，所以记录一下；另外还有位高人曾经点拨，把你学到的理论跟别人去说，不怕说错，错了纠正，跟下个人再说，最终说出来的东西，自己也记得住，结果肯定也正确。</h2><a id="more"></a>
+<h2 id="IOC-概念"><a href="#IOC-概念" class="headerlink" title="IOC 概念"></a>IOC 概念</h2><h3 id="IOC：-Inversion-of-Control-（控制反转）"><a href="#IOC：-Inversion-of-Control-（控制反转）" class="headerlink" title="IOC： Inversion of Control （控制反转）"></a>IOC： Inversion of Control （控制反转）</h3><p>它是一个技术思想，不是一个技术实现</p>
+<h3 id="描述的事情"><a href="#描述的事情" class="headerlink" title="描述的事情"></a>描述的事情</h3><p>Java开发领域对象的创建，管理的问题</p>
+<h3 id="传统开发方式"><a href="#传统开发方式" class="headerlink" title="传统开发方式"></a>传统开发方式</h3><p>比如类A依赖于类B，往往会在类A中new一个B的对象</p>
+<h3 id="IOC思想下开发方式"><a href="#IOC思想下开发方式" class="headerlink" title="IOC思想下开发方式"></a>IOC思想下开发方式</h3><p>不需要自己去new对象，而是由IOC容器（Spring框架）去帮助我们实例化对象并且管理它，我们需要使用哪个对象，去IOC中拿即可</p>
+<h3 id="为什么叫控制反转："><a href="#为什么叫控制反转：" class="headerlink" title="为什么叫控制反转："></a>为什么叫控制反转：</h3><p>控制：指的是对象创建（实例化、管理）的权利<br>反转：控制权交给外部环境（Spring框架、IOC容器）是指程序不再主动去new或获取外部资源，而是IOC/DI容器将程序所需资源、创建的对象注入程序，对于程序创建对象的操作来说发生了反转。反转使类之间松散耦合，管理更加有序，维护简单，一旦相关类发生变动不再需要修改大量的new操作中相关代码，而只需要修改配置文件<br><img src="p1.jpg"></p>
+<h2 id="IOC-解决了对象与对象之间的耦合问题"><a href="#IOC-解决了对象与对象之间的耦合问题" class="headerlink" title="IOC 解决了对象与对象之间的耦合问题"></a>IOC 解决了对象与对象之间的耦合问题</h2><p><img src="p2.jpg"></p>
+<h2 id="DI：Dependancy-Injection（依赖注入）"><a href="#DI：Dependancy-Injection（依赖注入）" class="headerlink" title="DI：Dependancy Injection（依赖注入）"></a>DI：Dependancy Injection（依赖注入）</h2><p>在容器内注入程序相关资源、依赖关系，外部资源指类在内部不能得到或实现的东西，如A类调用B类，B类就是A类的外部资源，A类读取文件，文件就是A类的外部资源</p>
+<p>IOC/DI容器实现IOC思想，提供对象创建、装配、生命周期管理</p>
+<h3 id="区别：IOC-和-DI-描述的是一件事情，只不过角度不同罢了"><a href="#区别：IOC-和-DI-描述的是一件事情，只不过角度不同罢了" class="headerlink" title="区别：IOC 和 DI 描述的是一件事情，只不过角度不同罢了"></a>区别：IOC 和 DI 描述的是一件事情，只不过角度不同罢了</h3><p><img src="p3.jpg"></p>
+<h2 id="AOP-概念"><a href="#AOP-概念" class="headerlink" title="AOP 概念"></a>AOP 概念</h2><h3 id="AOP-Aspect-oriented-Programming-（面向切面）"><a href="#AOP-Aspect-oriented-Programming-（面向切面）" class="headerlink" title="AOP Aspect oriented Programming （面向切面）"></a>AOP Aspect oriented Programming （面向切面）</h3><h4 id="AOP是OOP的延续，所以在了解AOP之前，我们先说下OOP，OOP-是一种垂直继承体系，OOP-的三大特征：封装，继承，多态"><a href="#AOP是OOP的延续，所以在了解AOP之前，我们先说下OOP，OOP-是一种垂直继承体系，OOP-的三大特征：封装，继承，多态" class="headerlink" title="AOP是OOP的延续，所以在了解AOP之前，我们先说下OOP，OOP 是一种垂直继承体系，OOP 的三大特征：封装，继承，多态"></a>AOP是OOP的延续，所以在了解AOP之前，我们先说下OOP，OOP 是一种垂直继承体系，OOP 的三大特征：封装，继承，多态</h4><p><img src="p4.jpg"></p>
+<h4 id="OOP编程思想可以解决大多数的代码重复问题，但是有有些情况是处理不了的，比如：在顶级父类Animal中为了监控性能，多个方法中相同位置出现了重复代码，OOP有些束手无策，此时就需要我们使用AOP来解决"><a href="#OOP编程思想可以解决大多数的代码重复问题，但是有有些情况是处理不了的，比如：在顶级父类Animal中为了监控性能，多个方法中相同位置出现了重复代码，OOP有些束手无策，此时就需要我们使用AOP来解决" class="headerlink" title="OOP编程思想可以解决大多数的代码重复问题，但是有有些情况是处理不了的，比如：在顶级父类Animal中为了监控性能，多个方法中相同位置出现了重复代码，OOP有些束手无策，此时就需要我们使用AOP来解决"></a>OOP编程思想可以解决大多数的代码重复问题，但是有有些情况是处理不了的，比如：在顶级父类Animal中为了监控性能，多个方法中相同位置出现了重复代码，OOP有些束手无策，此时就需要我们使用AOP来解决</h4><p><img src="p5.jpg"><br><img src="p6.jpg"></p>
+<h3 id="横切逻辑代码存在的问题"><a href="#横切逻辑代码存在的问题" class="headerlink" title="横切逻辑代码存在的问题"></a>横切逻辑代码存在的问题</h3><p>横切代码重复问题<br>横切逻辑代码和业务代码混杂在一起，代码臃肿，维护不方便</p>
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>AOP独辟蹊径提出横向抽取机制，将横切逻辑代码和业务逻辑代码分离<br><img src="p7.jpg"></p>
+<h3 id="AOP-解决的问题"><a href="#AOP-解决的问题" class="headerlink" title="AOP 解决的问题"></a>AOP 解决的问题</h3><p>在不改变原有业务逻辑情况下，增强横切逻辑代码，根本上解耦合，避免横切逻辑代码重复</p>
+<h3 id="为什么叫（AOP）面向切面编程"><a href="#为什么叫（AOP）面向切面编程" class="headerlink" title="为什么叫（AOP）面向切面编程"></a>为什么叫（AOP）面向切面编程</h3><p>切：指的是横切逻辑，原有业务逻辑代码我们不能动，只能操作横切逻辑代码，所以面向横切逻辑<br>面：横切逻辑代码往往要影响的是很多个方法，每一个方法都如同一个点，多个点构成面</p>
+<h2 id="一般AOP适用场景"><a href="#一般AOP适用场景" class="headerlink" title="一般AOP适用场景"></a>一般AOP适用场景</h2><ul>
+<li>譬如接口服务controller层通常在接口入库需要打印接口的名称，入参等，在接口出口打印接口运行的结果，这就是AOP常用的场景之一。</li>
+<li>另外spring的filter其实也是AOP的实现，权限校验等一般就是放在filter中进行的。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://royal119790617.github.io/2021/02/22/springboot%E6%A0%B8%E5%BF%83%E4%B9%8BIOC%E5%92%8CAOP/" data-id="cklpzpfgy000530v82y2r8u5n" data-title="springboot核心之IOC和AOP" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/03/01/sqlserver%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E6%94%B6%E7%BC%A9%E8%84%9A%E6%9C%AC/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          sqlserver之数据库收缩脚本
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/02/11/%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B%E5%8F%8AHttp%E5%8D%8F%E8%AE%AE%E6%8F%A1%E6%89%8B/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">网络分层模型及Http协议握手</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Categories</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/antd/">antd</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/database/">database</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/docker/">docker</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/network/">network</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/tips/">tips</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">March 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">February 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/03/01/sqlserver%E4%B9%8B%E6%95%B0%E6%8D%AE%E5%BA%93%E6%94%B6%E7%BC%A9%E8%84%9A%E6%9C%AC/">sqlserver之数据库收缩脚本</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/22/springboot%E6%A0%B8%E5%BF%83%E4%B9%8BIOC%E5%92%8CAOP/">springboot核心之IOC和AOP</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/11/%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B%E5%8F%8AHttp%E5%8D%8F%E8%AE%AE%E6%8F%A1%E6%89%8B/">网络分层模型及Http协议握手</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/10/%E8%AE%B0%E7%94%A8hexo%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2%E5%8F%8A%E4%BD%BF%E7%94%A8%E5%BF%83%E5%BE%97/">记用hexo搭建个人博客及使用心得</a>
+          </li>
+        
+          <li>
+            <a href="/2021/02/09/docker-compose%E5%AE%89%E8%A3%85mysql8-0%E9%9B%86%E7%BE%A4/">mysql8.0主从集群搭建</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 Royal<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
