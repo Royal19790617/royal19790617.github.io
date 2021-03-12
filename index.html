@@ -71,6 +71,53 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-记docker打包java项目镜像使用excel功能报错的解决" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/03/12/%E8%AE%B0docker%E6%89%93%E5%8C%85java%E9%A1%B9%E7%9B%AE%E9%95%9C%E5%83%8F%E4%BD%BF%E7%94%A8excel%E5%8A%9F%E8%83%BD%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3/" class="article-date">
+  <time class="dt-published" datetime="2021-03-12T08:53:02.000Z" itemprop="datePublished">2021-03-12</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/docker/">docker</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/03/12/%E8%AE%B0docker%E6%89%93%E5%8C%85java%E9%A1%B9%E7%9B%AE%E9%95%9C%E5%83%8F%E4%BD%BF%E7%94%A8excel%E5%8A%9F%E8%83%BD%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3/">记docker打包java项目镜像使用excel功能报错的解决</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="一般使用docker打java程序镜像会用openjdk-alpine。这个是最小化的java环境，就像以前装linux虚拟机，都是用最小化安装系统，系统能跑起来就行，要用什么再装什么，没必要去装个4g的完整版，浪费时间，还占用资源。openjdk-alpine这个镜像就是同理，我们用的是springboot和esay-execl做了导入导出excel的接口，在打包的时候就需要安装字符集（代码如下），否则调用接口时就会报错。"><a href="#一般使用docker打java程序镜像会用openjdk-alpine。这个是最小化的java环境，就像以前装linux虚拟机，都是用最小化安装系统，系统能跑起来就行，要用什么再装什么，没必要去装个4g的完整版，浪费时间，还占用资源。openjdk-alpine这个镜像就是同理，我们用的是springboot和esay-execl做了导入导出excel的接口，在打包的时候就需要安装字符集（代码如下），否则调用接口时就会报错。" class="headerlink" title="一般使用docker打java程序镜像会用openjdk-alpine。这个是最小化的java环境，就像以前装linux虚拟机，都是用最小化安装系统，系统能跑起来就行，要用什么再装什么，没必要去装个4g的完整版，浪费时间，还占用资源。openjdk-alpine这个镜像就是同理，我们用的是springboot和esay execl做了导入导出excel的接口，在打包的时候就需要安装字符集（代码如下），否则调用接口时就会报错。"></a>一般使用docker打java程序镜像会用openjdk-alpine。这个是最小化的java环境，就像以前装linux虚拟机，都是用最小化安装系统，系统能跑起来就行，要用什么再装什么，没必要去装个4g的完整版，浪费时间，还占用资源。openjdk-alpine这个镜像就是同理，我们用的是springboot和esay execl做了导入导出excel的接口，在打包的时候就需要安装字符集（代码如下），否则调用接口时就会报错。</h3>
+        
+          <p class="article-more-link">
+            <a href="/2021/03/12/%E8%AE%B0docker%E6%89%93%E5%8C%85java%E9%A1%B9%E7%9B%AE%E9%95%9C%E5%83%8F%E4%BD%BF%E7%94%A8excel%E5%8A%9F%E8%83%BD%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://royal119790617.github.io/2021/03/12/%E8%AE%B0docker%E6%89%93%E5%8C%85java%E9%A1%B9%E7%9B%AE%E9%95%9C%E5%83%8F%E4%BD%BF%E7%94%A8excel%E5%8A%9F%E8%83%BD%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3/" data-id="ckm636ojz0000ecv871hv1e7l" data-title="记docker打包java项目镜像使用excel功能报错的解决" class="article-share-link">Share</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-git常用命令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/03/08/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/" class="article-date">
@@ -529,6 +576,10 @@
       <ul>
         
           <li>
+            <a href="/2021/03/12/%E8%AE%B0docker%E6%89%93%E5%8C%85java%E9%A1%B9%E7%9B%AE%E9%95%9C%E5%83%8F%E4%BD%BF%E7%94%A8excel%E5%8A%9F%E8%83%BD%E6%8A%A5%E9%94%99%E7%9A%84%E8%A7%A3%E5%86%B3/">记docker打包java项目镜像使用excel功能报错的解决</a>
+          </li>
+        
+          <li>
             <a href="/2021/03/08/git%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/">git常用命令</a>
           </li>
         
@@ -542,10 +593,6 @@
         
           <li>
             <a href="/2021/02/22/springboot%E6%A0%B8%E5%BF%83%E4%B9%8BIOC%E5%92%8CAOP/">springboot核心之IOC和AOP</a>
-          </li>
-        
-          <li>
-            <a href="/2021/02/11/%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82%E6%A8%A1%E5%9E%8B%E5%8F%8AHttp%E5%8D%8F%E8%AE%AE%E6%8F%A1%E6%89%8B/">网络分层模型及Http协议握手</a>
           </li>
         
       </ul>
